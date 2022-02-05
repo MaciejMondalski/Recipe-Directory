@@ -15,10 +15,10 @@ function Home() {
 }
 
 const StyledHome = styled.div`
-  width: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 80vw;
 `;
 
 export default Home;

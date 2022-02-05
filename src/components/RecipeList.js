@@ -22,6 +22,9 @@ const StyledRecipeList = styled.div`
   font-size: 0.9em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  width: 100%;
+
+  // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 30px;
   margin: 40px auto;
 
@@ -30,7 +33,6 @@ const StyledRecipeList = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    border: 1px grey solid;
     padding: 20px;
     border-radius: 6px;
     color: #333;
