@@ -21,11 +21,11 @@ function RecipeList({ recipes }) {
 const StyledRecipeList = styled.div`
   font-size: 0.9em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  max-width: 90%;
 
   // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 30px;
+  grid-gap: 40px;
   margin: 40px auto;
 
   .card {
@@ -38,6 +38,7 @@ const StyledRecipeList = styled.div`
     color: #333;
     background: #fff;
     transition: all 0.3s ease;
+    max-width: 500px;
 
     h3 {
       color: #555;
