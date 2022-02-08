@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 function RecipeList({ recipes }) {
+  if (recipes.length === 0) {
+    return <div className='error'>No recipes to load...</div>;
+  }
+
   return (
     <StyledRecipeList>
       {recipes.map((recipe) => (
@@ -25,7 +29,7 @@ const StyledRecipeList = styled.div`
   max-width: 90%;
 
   // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 40px;
+  grid-gap: 30px;
   margin: 40px auto;
 
   .card {
@@ -38,7 +42,7 @@ const StyledRecipeList = styled.div`
     color: #333;
     background: #fff;
     transition: all 0.3s ease;
-    max-width: 500px;
+    max-width: 450px;
 
     h3 {
       color: #555;
@@ -67,7 +71,8 @@ const StyledRecipeList = styled.div`
     }
 
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.013);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
     #card-element {
