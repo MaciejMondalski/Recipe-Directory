@@ -43,7 +43,7 @@ function Create() {
     if (data) {
       history.push('/');
     }
-  }, [data]);
+  }, [data, history]);
 
   console.log(data);
 
