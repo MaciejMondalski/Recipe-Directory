@@ -22,11 +22,17 @@ function Navbar() {
 }
 
 const StyledNavbar = styled.div`
-  background: #58249c;
+  background: linear-gradient(
+    166deg,
+    rgba(88, 36, 156, 1) 26%,
+    rgba(66, 36, 156, 1) 89%
+  );
+
   display: flex;
   justify-content: center;
   width: 100%;
-
+  position: fixed;
+  z-index: 5;
   nav {
     display: flex;
     justify-content: space-between;
