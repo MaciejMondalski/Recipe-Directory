@@ -18,20 +18,22 @@ function App() {
       <StyledApp>
         <BrowserRouter>
           <Navbar />
-          <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route exact path='/create'>
-              <Create />
-            </Route>
-            <Route exact path='/search'>
-              <Search />
-            </Route>
-            <Route exact path='/recipes/:id'>
-              <Recipe />
-            </Route>
-          </Switch>
+          <div className='main-content'>
+            <Switch>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <Route exact path='/create'>
+                <Create />
+              </Route>
+              <Route exact path='/search'>
+                <Search />
+              </Route>
+              <Route exact path='/recipes/:id'>
+                <Recipe />
+              </Route>
+            </Switch>
+          </div>
         </BrowserRouter>
       </StyledApp>
     </div>
@@ -42,6 +44,10 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .main-content {
+    margin-top: 60px;
+  }
 `;
 
 export default App;
