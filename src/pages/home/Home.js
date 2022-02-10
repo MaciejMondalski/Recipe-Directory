@@ -19,6 +19,7 @@ const StyledHome = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 80vw;
+  margin-top: 40px;
 `;
 
 export default Home;

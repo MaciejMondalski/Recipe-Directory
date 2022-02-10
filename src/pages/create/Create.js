@@ -111,7 +111,7 @@ function Create() {
 const StyledCreate = styled.div`
   color: #555;
   max-width: 580px;
-  margin: 40px auto;
+  margin: auto;
   padding: 40px;
 
   h2 {

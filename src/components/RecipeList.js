@@ -30,7 +30,8 @@ const StyledRecipeList = styled.div`
 
   // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 30px;
-  margin: 40px auto;
+  margin: auto;
+  margin-bottom: 40px;
 
   .card {
     display: flex;
