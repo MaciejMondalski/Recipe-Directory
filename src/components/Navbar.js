@@ -1,11 +1,14 @@
 import styled from 'styled-components';
-
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 import { Link } from 'react-router-dom';
 import Searchbar from './Searchbar';
 
 function Navbar() {
+  const { color } = useContext(ThemeContext);
+
   return (
-    <StyledNavbar>
+    <StyledNavbar style={{ background: color }}>
       <nav>
         <Link to='/' className='brand'>
           <h1>Diet Planner</h1>
@@ -23,9 +26,10 @@ function Navbar() {
 
 const StyledNavbar = styled.div`
   background: linear-gradient(
-    166deg,
-    rgba(88, 36, 156, 1) 26%,
-    rgba(66, 36, 156, 1) 89%
+    167deg,
+    rgba(88, 36, 156, 1) 22%,
+    rgba(68, 36, 156, 1) 58%,
+    rgba(66, 36, 156, 1) 100%
   );
 
   display: flex;
