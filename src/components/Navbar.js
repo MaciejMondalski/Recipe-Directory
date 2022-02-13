@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 import { Link } from 'react-router-dom';
 import Searchbar from './Searchbar';
 
 function Navbar() {
-  const { color } = useContext(ThemeContext);
+  const { color } = useTheme();
 
   return (
     <StyledNavbar style={{ background: color }}>
