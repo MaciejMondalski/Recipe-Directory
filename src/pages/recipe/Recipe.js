@@ -36,7 +36,6 @@ const StyledRecipe = styled.div`
   text-align: center;
   background: #fff;
   padding: 40px;
-  margin: 40px;
   box-sizing: border-box;
   max-width: 1200px;
 
