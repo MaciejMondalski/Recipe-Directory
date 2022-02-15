@@ -4,13 +4,10 @@ import { Link } from 'react-router-dom';
 import Searchbar from './Searchbar';
 
 function Navbar() {
-  const { color, changeColor } = useTheme();
+  const { color } = useTheme();
 
   return (
-    <StyledNavbar
-      style={{ background: color }}
-      onClick={() => changeColor('pink')}
-    >
+    <StyledNavbar style={{ background: color }}>
       <nav>
         <Link to='/' className='brand'>
           <h1>Diet Planner</h1>
@@ -33,7 +30,6 @@ const StyledNavbar = styled.div`
     rgba(68, 36, 156, 1) 58%,
     rgba(66, 36, 156, 1) 100%
   );
-
   display: flex;
   justify-content: center;
   width: 100%;

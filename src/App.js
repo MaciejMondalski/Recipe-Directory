@@ -9,6 +9,7 @@ import Search from './pages/search/Search';
 
 // individual components
 import Navbar from './components/Navbar';
+import ThemeSelector from './components/ThemeSelector';
 
 import './App.scss';
 
@@ -19,6 +20,8 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <div className='main-content'>
+            <ThemeSelector />
+
             <Switch>
               <Route exact path='/'>
                 <Home />
