@@ -29,6 +29,9 @@ const StyledSearch = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 80vw;
+  h2 {
+    margin-top: 0;
+  }
 `;
 
 export default Search;
