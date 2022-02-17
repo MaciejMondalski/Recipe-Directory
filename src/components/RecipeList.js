@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../hooks/useTheme';
 
 function RecipeList({ recipes }) {
+  const { mode } = useTheme();
+
   if (recipes.length === 0) {
     return <div className='error'>No recipes to load...</div>;
   }
@@ -9,7 +12,7 @@ function RecipeList({ recipes }) {
   return (
     <StyledRecipeList>
       {recipes.map((recipe) => (
-        <div key={recipe.id} className='card'>
+        <div key={recipe.id} className={`card ${mode}`}>
           <h3 id='card-element'>{recipe.title}</h3>
           <p id='card-element'>{recipe.cookingTime} to make.</p>
           <div id='card-element'>{recipe.method.substring(0, 100)}...</div>
@@ -78,6 +81,22 @@ const StyledRecipeList = styled.div`
 
     #card-element {
       padding: 10px;
+    }
+  }
+
+  // dark mode
+  .dark {
+    background: #555;
+
+    &:hover {
+      transform: scale(1.013);
+      box-shadow: rgba(192, 192, 192, 0.2) 0px 7px 29px 0px;
+    }
+
+    p,
+    h3,
+    div {
+      color: #e4e4e4;
     }
   }
 `;
