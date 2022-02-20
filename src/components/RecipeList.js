@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../hooks/useTheme';
+import trash from '../assets/trash.svg';
+import { projectFirestore } from '../firebase/config';
 
 function RecipeList({ recipes }) {
   const { mode } = useTheme();
@@ -8,6 +10,10 @@ function RecipeList({ recipes }) {
   if (recipes.length === 0) {
     return <div className='error'>No recipes to load...</div>;
   }
+
+  const handleClick = (id) => {
+    projectFirestore.collection('recipes').doc(id).delete();
+  };
 
   return (
     <StyledRecipeList>
@@ -19,6 +25,12 @@ function RecipeList({ recipes }) {
           <Link id='card-element' to={`/recipes/${recipe.id}`}>
             Cook this
           </Link>
+          <img
+            className='delete'
+            src={trash}
+            alt='delete button'
+            onClick={() => handleClick(recipe.id)}
+          />
         </div>
       ))}
     </StyledRecipeList>
@@ -28,7 +40,7 @@ function RecipeList({ recipes }) {
 const StyledRecipeList = styled.div`
   font-size: 0.9em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   max-width: 90%;
 
   // grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -37,6 +49,7 @@ const StyledRecipeList = styled.div`
   margin-bottom: 40px;
 
   .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,7 +59,15 @@ const StyledRecipeList = styled.div`
     color: #333;
     background: #fff;
     transition: all 0.3s ease;
-    max-width: 450px;
+    max-width: 550px;
+
+    .delete {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      filter: invert(60%);
+    }
 
     h3 {
       color: #555;
