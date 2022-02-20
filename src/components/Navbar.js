@@ -10,7 +10,7 @@ function Navbar() {
     <StyledNavbar style={{ background: color }}>
       <nav>
         <Link to='/' className='brand'>
-          <h1>Diet Planner</h1>
+          <h1>Your Recipes</h1>
         </Link>
         <div className='wrapper'>
           <Searchbar />
