@@ -1,13 +1,40 @@
 import { useParams } from 'react-router-dom';
-import { useFetch } from '../../hooks/useFetch';
+import { useEffect, useState } from 'react';
+import { projectFirestore } from '../../firebase/config';
 import { useTheme } from '../../hooks/useTheme';
 import styled from 'styled-components';
 
 function Recipe() {
   const { id } = useParams();
-  const url = 'http://localhost:3000/recipes/' + id;
-  const { data: recipe, error, isPending } = useFetch(url);
   const { mode } = useTheme();
+
+  const [recipe, setRecipe] = useState(null);
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setIsPending(true);
+
+    const unsub = projectFirestore
+      .collection('recipes')
+      .doc(id)
+      .onSnapshot((doc) => {
+        if (doc.exists) {
+          setIsPending(false);
+          setRecipe(doc.data());
+        } else {
+          setIsPending(false);
+          setError('Could not find that recipe');
+        }
+      });
+    return () => unsub();
+  }, [id]);
+
+  const handleClick = () => {
+    projectFirestore.collection('recipes').doc(id).update({
+      title: 'Something completely different',
+    });
+  };
 
   return (
     <StyledRecipe>
@@ -26,6 +53,7 @@ function Recipe() {
               </ul>
             </div>
             <p className='method'>{recipe.method}</p>
+            <button onClick={handleClick}>Update me</button>
           </>
         )}
       </div>
@@ -43,6 +71,10 @@ const StyledRecipe = styled.div`
     padding: 40px;
     box-sizing: border-box;
     max-width: 1200px;
+
+    button {
+      margin: auto;
+    }
 
     h2 {
       margin: 0;
